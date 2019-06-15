@@ -18,7 +18,9 @@ public class ConsumeMesage implements Runnable {
             try {
                 Thread.sleep(3000);
                 messageMod = messageDao.getMinIdAndRemove();
-                logger.info("send mail" + messageMod.toString());
+                if (messageMod != null) {
+                    logger.info("send mail" + messageMod.toString());
+                }
             } catch (InterruptedException e) {
                 new RuntimeException("Cannot send mail");
             }
